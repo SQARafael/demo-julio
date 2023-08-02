@@ -5,9 +5,15 @@ package is.demo.serenity.steps;
  */
 
 import io.cucumber.datatable.DataTable;
+import is.demo.serenity.models.Credenciales;
 import is.demo.serenity.pageObject.InicioSesionPage;
+import is.demo.serenity.utils.Excel;
 import net.thucydides.core.annotations.Step;
 import org.fluentlenium.core.annotation.Page;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * @autor Rafael Chica
@@ -23,25 +29,29 @@ public class IncioSesionSteps {
    }
 
     @Step("Enviar Campo Usuario")
-    public void enviarUsuario(DataTable dataTable){
+    public void enviarUsuario(){
+
+        String usuario = Credenciales.data().get(0).get("Usuario");
 
        //Limpia el campo de usurio
        inicio.getDriver().findElement(inicio.getTxtUsuario()).clear();
 
        //Envia el usuario
         inicio.getDriver().findElement(inicio.getTxtUsuario())
-                .sendKeys(dataTable.asLists().get(1).get(0));
+                .sendKeys(usuario);
 
     }
 
     @Step("Enviar Campo clave")
-    public void enviarClave(DataTable dataTable){
+    public void enviarClave(){
+
+        String clave = Credenciales.data().get(0).get("Clave");
         //Limpia el campo de clave
         inicio.getDriver().findElement(inicio.getTxtClave()).clear();
 
         //Envia el clave
         inicio.getDriver().findElement(inicio.getTxtClave())
-                .sendKeys(dataTable.asLists().get(1).get(1));
+                .sendKeys(clave);
 
     }
 

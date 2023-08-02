@@ -29,8 +29,8 @@ public class InicioSesionStepDefinitions {
     @Cuando("el usuario ingresa las credenciales")
     public void elUsuarioIngresaLasCredenciales(DataTable dataTable) {
 
-        inicioSesion.enviarUsuario(dataTable);
-        inicioSesion.enviarClave(dataTable);
+        inicioSesion.enviarUsuario();
+        inicioSesion.enviarClave();
 
     }
     @Cuando("de clic en ingresar")
